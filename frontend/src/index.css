@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background: #0b0d10;
+  background-image:
+    radial-gradient(circle at 15% 0%, rgba(232, 163, 61, 0.06), transparent 40%);
+  color: #e5e7eb;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 64px 24px 80px;
+}
+
+::selection {
+  background: rgba(232, 163, 61, 0.3);
+}
