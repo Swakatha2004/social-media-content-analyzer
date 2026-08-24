@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import axios from 'axios';
 import './App.css';
 
-const API_URL = 'http://127.0.0.1:8000';
+const API_URL = 'https://social-media-content-analyzer-api-7onz.onrender.com';
 
 const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10 MB
 
