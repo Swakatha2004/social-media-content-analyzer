@@ -1,11 +1,11 @@
 import pdfplumber
-import easyocr
 from PIL import Image
 import io
+import numpy as np
+from rapidocr_onnxruntime import RapidOCR
 
-# Load OCR reader once when the backend starts.
-# English is enough for the social-media assignment.
-reader = easyocr.Reader(["en"], gpu=False)
+
+ocr = RapidOCR()
 
 
 def extract_text_from_pdf(file_bytes: bytes) -> str:
@@ -43,15 +43,16 @@ def extract_text_from_image(file_bytes: bytes) -> str:
 
     try:
         image = Image.open(io.BytesIO(file_bytes)).convert("RGB")
-
-        # EasyOCR expects an image array
-        import numpy as np
-
         image_array = np.array(image)
 
-        results = reader.readtext(image_array, detail=0)
+        result, _ = ocr(image_array)
 
-        text = "\n".join(results)
+        if not result:
+            raise ValueError("No text detected in image")
+
+        text = "\n".join(
+            item[1] for item in result
+        )
 
         if not text.strip():
             raise ValueError("No text detected in image")
