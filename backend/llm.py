@@ -7,9 +7,8 @@ OLLAMA_MODEL = "llama3.2:3b"
 
 GEMINI_API_URL = (
     "https://generativelanguage.googleapis.com/v1beta/models/"
-    "gemini-2.5-flash-lite:generateContent"
+    "gemini-2.5-flash:generateContent"
 )
-
 
 def build_prompt(text: str) -> str:
     return f"""
